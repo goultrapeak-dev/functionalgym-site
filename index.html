@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Functional Gym LLC — Home Gym Equipment Service, Queens NY</title>
-<meta name="description" content="Specialist repair, replacement, maintenance and deep cleaning for home gym equipment in Queens, NY. Family owned. Free estimates, warranty on all work, emergency call-outs. (347) 596-7932">
+<title>Functional Gym LLC — Gym Equipment Repair &amp; Service, Queens NY</title>
+<meta name="description" content="Repair, replacement, maintenance and deep cleaning for gym equipment in Queens, NY — fitness clubs, apartment &amp; hotel gyms, studios and home setups. Family owned. Free estimates, warranty on all work. (347) 596-7932">
 <link rel="canonical" href="https://functionalgymllc.com/">
 <meta name="theme-color" content="#08090A">
 
@@ -15,15 +15,15 @@
 <!-- link previews when the URL is texted or shared -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Functional Gym LLC">
-<meta property="og:title" content="Home gym equipment, expertly serviced — Queens, NY">
-<meta property="og:description" content="Specialist repair, replacement, maintenance and deep cleaning for home gym equipment across Queens. Free estimates, warranty on all work. (347) 596-7932">
+<meta property="og:title" content="Gym equipment, expertly serviced — Queens, NY">
+<meta property="og:description" content="Repair, replacement, maintenance and deep cleaning for gym equipment across Queens — clubs, apartment &amp; hotel gyms, studios and home setups. Free estimates, warranty on all work. (347) 596-7932">
 <meta property="og:url" content="https://functionalgymllc.com/">
 <meta property="og:image" content="https://functionalgymllc.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Home gym equipment, expertly serviced — Queens, NY">
-<meta name="twitter:description" content="Repair, replacement, maintenance and cleaning for home gyms in Queens, NY. Free estimates, warranty on all work.">
+<meta name="twitter:title" content="Gym equipment, expertly serviced — Queens, NY">
+<meta name="twitter:description" content="Repair, replacement, maintenance and cleaning for gyms of every size in Queens, NY. Free estimates, warranty on all work.">
 <meta name="twitter:image" content="https://functionalgymllc.com/og-image.png">
 
 <!-- local business structured data (helps Google Maps / local search) -->
@@ -32,7 +32,7 @@
   "@context":"https://schema.org",
   "@type":"LocalBusiness",
   "name":"Functional Gym LLC",
-  "description":"Repair, replacement, maintenance and cleaning services for home gym equipment in Queens, NY.",
+  "description":"Repair, replacement, maintenance and cleaning services for gym equipment in Queens, NY — for fitness clubs, apartment and hotel gyms, studios and home setups.",
   "url":"https://functionalgymllc.com/",
   "telephone":"+1-347-596-7932",
   "email":"functionalgymllc@gmail.com",
@@ -45,10 +45,10 @@
   }],
   "paymentAccepted":"Cash, Credit Card, Check",
   "hasOfferCatalog":{
-    "@type":"OfferCatalog","name":"Home gym equipment services",
+    "@type":"OfferCatalog","name":"Gym equipment services",
     "itemListElement":[
-      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Home gym equipment repair & replacement"}},
-      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Home gym equipment maintenance & cleaning"}}
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Gym equipment repair & replacement"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Gym equipment maintenance & cleaning"}}
     ]
   }
 }
@@ -342,6 +342,22 @@
   .callbar .a1{background:var(--accent);color:var(--ink)}
   .callbar .a2{background:rgba(255,255,255,.07);color:var(--text);border:1px solid var(--line)}
 
+  /* ---------- who we serve ---------- */
+  .serve{padding:100px 0}
+  .serve-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .serve-card{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);
+    padding:32px 30px;transition:transform .4s var(--ease),border-color .4s var(--ease);
+  }
+  .serve-card:hover{transform:translateY(-4px);border-color:rgba(198,242,78,.4)}
+  .serve-card .ic{
+    width:46px;height:46px;border-radius:12px;background:rgba(198,242,78,.1);
+    display:grid;place-items:center;margin-bottom:20px;color:var(--accent);
+  }
+  .serve-card .ic svg{width:24px;height:24px}
+  .serve-card h3{font-size:1.18rem;margin-bottom:8px;letter-spacing:-.02em}
+  .serve-card p{color:var(--muted);font-size:.96rem;letter-spacing:-.008em}
+
   /* ---------- scroll reveal ---------- */
   .rv{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
   .rv.in{opacity:1;transform:none}
@@ -391,10 +407,10 @@
       <span>Functional Gym<small>Queens, NY</small></span>
     </a>
     <nav class="navlinks">
+      <a href="#who">Who we serve</a>
       <a href="#services">Services</a>
       <a href="#process">Process</a>
       <a href="#about">About</a>
-      <a href="#reviews">Reviews</a>
       <a href="#faq">FAQ</a>
     </nav>
     <div class="nav-right">
@@ -406,10 +422,10 @@
     </div>
   </div>
   <nav class="mnav" id="mnav">
+    <a href="#who">Who we serve</a>
     <a href="#services">Services</a>
     <a href="#process">Process</a>
     <a href="#about">About</a>
-    <a href="#reviews">Reviews</a>
     <a href="#faq">FAQ</a>
     <a href="tel:+13475967932" class="btn btn-line">Call (347) 596-7932</a>
     <a href="#book" class="btn btn-accent" style="margin-top:9px">Book a visit</a>
@@ -422,8 +438,8 @@
 <section class="hero">
   <div class="wrap">
     <span class="eyebrow rv">Family owned · Serving Queens, NY</span>
-    <h1 class="balance rv">Home gym equipment,<br><span class="soft">expertly serviced.</span></h1>
-    <p class="lede rv">Specialist repair, replacement, maintenance and deep cleaning for home gyms across Queens. Diagnosed properly, quoted upfront, guaranteed in writing.</p>
+    <h1 class="balance rv">Gym equipment,<br><span class="soft">expertly serviced.</span></h1>
+    <p class="lede rv">Repair, replacement, maintenance and deep cleaning for gyms of every size across Queens — fitness clubs, apartment &amp; hotel gyms, studios and home setups. Diagnosed properly, quoted upfront, guaranteed in writing.</p>
     <div class="hero-cta rv">
       <a href="#book" class="btn btn-accent">Book a visit</a>
       <a href="tel:+13475967932" class="btn btn-line">
@@ -457,6 +473,49 @@
   </div>
 </div>
 
+<!-- ============ WHO WE SERVE ============ -->
+<section class="serve" id="who">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Who we serve</span>
+      <h2 class="balance">Any facility. Any brand. Any scale.</h2>
+      <p class="lede" style="margin-top:20px">From a single treadmill in a spare room to a full floor of cardio and strength equipment — if it's in a gym, we service it.</p>
+    </div>
+    <div class="serve-grid">
+      <div class="serve-card rv">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/><path d="M9 9v0M9 12v0M9 15v0"/></svg></div>
+        <h3>Commercial fitness clubs</h3>
+        <p>Big-box gyms and national chains with full floors of cardio and strength equipment. Fleet servicing and scheduled maintenance to keep every machine on the floor.</p>
+      </div>
+      <div class="serve-card rv">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16M10 8h0M14 8h0M10 12h0M14 12h0"/></svg></div>
+        <h3>Apartment &amp; condo gyms</h3>
+        <p>Residential fitness centers for apartment complexes, condos and HOAs. Keep amenity spaces safe, clean and fully working for your residents.</p>
+      </div>
+      <div class="serve-card rv">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 20h20M4 20V8l8-5 8 5v12M9 20v-6h6v6"/></svg></div>
+        <h3>Hotels &amp; corporate gyms</h3>
+        <p>Hotel fitness rooms and workplace gyms where equipment has to look and run like new for guests and staff, with minimal downtime.</p>
+      </div>
+      <div class="serve-card rv">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8v8M20 8v8M7 12h10M4 10v4M20 10v4"/></svg></div>
+        <h3>Boutique &amp; studio gyms</h3>
+        <p>CrossFit boxes, personal-training studios and specialty gyms. Rigs, racks, rowers and functional equipment kept competition-ready.</p>
+      </div>
+      <div class="serve-card rv">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12l9-9 9 9M5 10v10h14V10M9 20v-6h6v6"/></svg></div>
+        <h3>Home gyms</h3>
+        <p>Home setups from a single machine to a full garage gym. The same professional service the clubs get, at your door.</p>
+      </div>
+      <div class="serve-card rv">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 7h-9M14 17H5M17 17a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM7 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg></div>
+        <h3>Every brand of equipment</h3>
+        <p>Life Fitness, Precor, Technogym, Matrix, NordicTrack, Peloton and more — commercial-grade and consumer machines alike.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ LIGHT BLOCK: SERVICES + PROCESS ============ -->
 <div class="light-sec">
   <section class="pad" id="services">
@@ -464,7 +523,7 @@
       <div class="sec-head rv">
         <span class="eyebrow dark">Services</span>
         <h2 class="balance">Two disciplines, done to a standard.</h2>
-        <p class="lede dark" style="margin-top:20px">We don't upsell and we don't pad invoices. We fix what's broken, and we keep everything else from breaking.</p>
+        <p class="lede dark" style="margin-top:20px">Whether it's one machine or a whole floor, the standard is the same. We fix what's broken, and we keep everything else from breaking — one-off call-outs or ongoing service contracts.</p>
       </div>
 
       <div class="svc">
@@ -490,9 +549,9 @@
             <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3 21c3-3 3-6 0-9l6-6c3 3 6 3 9 0l-6 6c3 3 3 6 0 9M14 4l6 6"/></svg></i>
           </div>
           <h3>Maintenance &amp; cleaning</h3>
-          <p>Scheduled servicing and deep cleaning that extends equipment life and prevents the breakdowns we get called out for.</p>
+          <p>Scheduled servicing and deep cleaning that extends equipment life and prevents the breakdowns we get called out for. Ideal for facilities that can't afford downtime.</p>
           <ul>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Preventive maintenance schedules</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Preventive maintenance &amp; service contracts</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Belt tracking, tensioning &amp; lubrication</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Full safety inspection — cables, bolts, stops</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Deep clean &amp; sanitising of contact surfaces</li>
@@ -533,12 +592,13 @@
     <div class="rv">
       <span class="eyebrow">About us</span>
       <h2 class="balance" style="margin-bottom:26px">The people who answer are the people who show up.</h2>
-      <p>Functional Gym is your one-stop solution for repair, replacement, maintenance and cleaning of home gym equipment in Queens, NY.</p>
+      <p>Functional Gym is your one-stop solution for repair, replacement, maintenance and cleaning of gym equipment across Queens, NY — from fitness clubs and apartment gyms to hotels, studios and home setups.</p>
       <p>We're family owned and locally owned. There's no call centre and no rotating cast of subcontractors — the crew at your door is the crew you spoke to on the phone.</p>
-      <p>Our job is simple: keep your equipment functional, efficient and genuinely safe to train on.</p>
+      <p>Our job is simple: keep your equipment functional, efficient and genuinely safe to train on, whatever the size of your facility.</p>
     </div>
     <div class="panel rv">
       <div class="row"><span class="k">Ownership</span><span class="v">Family &amp; locally owned</span></div>
+      <div class="row"><span class="k">We service</span><span class="v">Clubs · Apartments · Hotels · Home</span></div>
       <div class="row"><span class="k">Service area</span><span class="v">Queens, New York</span></div>
       <div class="row"><span class="k">Estimates</span><span class="v acc">Always free</span></div>
       <div class="row"><span class="k">Guarantee</span><span class="v">Warranty on all work</span></div>
@@ -595,7 +655,7 @@
       <div class="faq-wrap rv">
         <details open>
           <summary>What services does Functional Gym offer?<span class="pm"></span></summary>
-          <div class="ans">Repair and replacement services, plus maintenance and cleaning services, for home gym equipment throughout Queens, NY.</div>
+          <div class="ans">Repair and replacement services, plus maintenance and cleaning services, for gym equipment throughout Queens, NY — for fitness clubs, apartment &amp; hotel gyms, studios and home setups alike.</div>
         </details>
         <details>
           <summary>How do I schedule a service?<span class="pm"></span></summary>
@@ -690,7 +750,7 @@
     <div class="f-grid">
       <div>
         <a href="#top" class="logo"><span class="glyph"></span><span>Functional Gym<small>Queens, NY</small></span></a>
-        <p>Family owned specialists in home gym equipment repair, replacement, maintenance and cleaning. Serving Queens, New York.</p>
+        <p>Family owned specialists in gym equipment repair, replacement, maintenance and cleaning — for fitness clubs, apartment &amp; hotel gyms, studios and home setups. Serving Queens, New York.</p>
       </div>
       <div>
         <h4>Services</h4>
