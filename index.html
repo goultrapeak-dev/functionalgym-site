@@ -703,6 +703,7 @@
         <textarea id="msg" placeholder="e.g. NordicTrack treadmill — belt slipping and the console cuts out mid-run"></textarea>
         <div class="hint">Brand and model help us bring the right parts first time.</div>
       </div>
+      <input type="checkbox" name="botcheck" id="botcheck" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
       <button type="submit" class="btn btn-blue send" id="sendbtn">Request my free estimate</button>
       <div class="status" id="status" role="status" aria-live="polite"></div>
       <p class="fine">Prefer to talk? Call <a href="tel:+13475967932">(347) 596-7932</a></p>
@@ -756,7 +757,17 @@
 </div>
 
 <script>
-var FORM_ENDPOINT = "";
+/* ===================================================================
+   FORM DELIVERY — submissions email straight to functionalgymllc@gmail.com
+   via Web3Forms (free, no account). To turn it on:
+     1. Go to https://web3forms.com
+     2. Enter  functionalgymllc@gmail.com  and create an Access Key
+     3. Confirm via the email Web3Forms sends to that Gmail inbox
+     4. Paste the key between the quotes below and re-upload the site
+   Until a key is set, the form falls back to opening the visitor's
+   email app addressed to the Gmail.
+   =================================================================== */
+var WEB3FORMS_KEY = "";
 var OWNER_EMAIL   = "functionalgymllc@gmail.com";
 
 document.getElementById('yr').textContent = new Date().getFullYear();
@@ -810,7 +821,8 @@ form.addEventListener('submit', function(e){
     return;
   }
 
-  if (!FORM_ENDPOINT){
+  /* No key yet -> fall back to opening the visitor's email app to the Gmail. */
+  if (!WEB3FORMS_KEY){
     var body = 'Name: ' + name + '\nPhone: ' + phone + '\nService: ' + svc +
                '\n\nEquipment / issue:\n' + (msg || '-') +
                '\n\n(Requesting 20% off first booking)';
@@ -822,12 +834,26 @@ form.addEventListener('submit', function(e){
 
   sendBtn.disabled = true;
   sendBtn.textContent = 'Sending…';
-  fetch(FORM_ENDPOINT, {
+  fetch('https://api.web3forms.com/submit', {
     method:'POST',
     headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body: JSON.stringify({ name:name, phone:phone, service:svc, message:msg, _subject:'New booking request — ' + name + ' (' + svc + ')' })
+    body: JSON.stringify({
+      access_key: WEB3FORMS_KEY,
+      subject: 'New booking request — ' + name + ' (' + svc + ')',
+      from_name: 'Functional Gym website',
+      botcheck: document.getElementById('botcheck').checked,
+      'Name': name,
+      'Phone': phone,
+      'Service needed': svc,
+      'Equipment & issue': msg || '(none given)',
+      'Promo': '20% off first booking requested'
+    })
   })
-  .then(function(r){ if (!r.ok) throw new Error(r.status); form.reset(); show('ok', "Thanks — we'll be in touch shortly. For anything urgent, call (347) 596-7932."); })
+  .then(function(r){ return r.json(); })
+  .then(function(d){
+    if (d && d.success){ form.reset(); show('ok', "Thanks — we'll be in touch shortly. For anything urgent, call (347) 596-7932."); }
+    else { throw new Error((d && d.message) || 'failed'); }
+  })
   .catch(function(){ show('err', "That didn't send. Please call (347) 596-7932 and we'll take care of it."); })
   .finally(function(){ sendBtn.disabled = false; sendBtn.textContent = 'Request my free estimate'; });
 });
