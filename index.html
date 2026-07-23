@@ -703,7 +703,7 @@
         <textarea id="msg" placeholder="e.g. NordicTrack treadmill — belt slipping and the console cuts out mid-run"></textarea>
         <div class="hint">Brand and model help us bring the right parts first time.</div>
       </div>
-      <input type="checkbox" name="botcheck" id="botcheck" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input type="text" name="_honey" id="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
       <button type="submit" class="btn btn-blue send" id="sendbtn">Request my free estimate</button>
       <div class="status" id="status" role="status" aria-live="polite"></div>
       <p class="fine">Prefer to talk? Call <a href="tel:+13475967932">(347) 596-7932</a></p>
@@ -758,17 +758,13 @@
 
 <script>
 /* ===================================================================
-   FORM DELIVERY — submissions email straight to functionalgymllc@gmail.com
-   via Web3Forms (free, no account). To turn it on:
-     1. Go to https://web3forms.com
-     2. Enter  functionalgymllc@gmail.com  and create an Access Key
-     3. Confirm via the email Web3Forms sends to that Gmail inbox
-     4. Paste the key between the quotes below and re-upload the site
-   Until a key is set, the form falls back to opening the visitor's
-   email app addressed to the Gmail.
+   FORM DELIVERY — submissions email straight to the Gmail via FormSubmit
+   (free, NO account, NO login, NO API key). Activation is one click:
+   the first time the form is submitted, FormSubmit emails the Gmail a
+   "Confirm your email" link — click it once and every submission from
+   then on lands in the inbox. Change the address here if ever needed.
    =================================================================== */
-var WEB3FORMS_KEY = "";
-var OWNER_EMAIL   = "functionalgymllc@gmail.com";
+var FORM_EMAIL  = "functionalgymllc@gmail.com";
 
 document.getElementById('yr').textContent = new Date().getFullYear();
 
@@ -821,27 +817,18 @@ form.addEventListener('submit', function(e){
     return;
   }
 
-  /* No key yet -> fall back to opening the visitor's email app to the Gmail. */
-  if (!WEB3FORMS_KEY){
-    var body = 'Name: ' + name + '\nPhone: ' + phone + '\nService: ' + svc +
-               '\n\nEquipment / issue:\n' + (msg || '-') +
-               '\n\n(Requesting 20% off first booking)';
-    window.location.href = 'mailto:' + OWNER_EMAIL +
-      '?subject=' + encodeURIComponent('Booking request — ' + name) +
-      '&body=' + encodeURIComponent(body);
-    return;
-  }
+  /* spam trap — real people never fill a hidden field */
+  if (document.getElementById('_honey').value){ return; }
 
   sendBtn.disabled = true;
   sendBtn.textContent = 'Sending…';
-  fetch('https://api.web3forms.com/submit', {
+  fetch('https://formsubmit.co/ajax/' + encodeURIComponent(FORM_EMAIL), {
     method:'POST',
     headers:{'Content-Type':'application/json','Accept':'application/json'},
     body: JSON.stringify({
-      access_key: WEB3FORMS_KEY,
-      subject: 'New booking request — ' + name + ' (' + svc + ')',
-      from_name: 'Functional Gym website',
-      botcheck: document.getElementById('botcheck').checked,
+      _subject: 'New booking request — ' + name + ' (' + svc + ')',
+      _template: 'table',
+      _captcha: 'false',
       'Name': name,
       'Phone': phone,
       'Service needed': svc,
@@ -851,8 +838,10 @@ form.addEventListener('submit', function(e){
   })
   .then(function(r){ return r.json(); })
   .then(function(d){
-    if (d && d.success){ form.reset(); show('ok', "Thanks — we'll be in touch shortly. For anything urgent, call (347) 596-7932."); }
-    else { throw new Error((d && d.message) || 'failed'); }
+    if (d && (d.success === true || d.success === 'true')){
+      form.reset();
+      show('ok', "Thanks — we'll be in touch shortly. For anything urgent, call (347) 596-7932.");
+    } else { throw new Error((d && d.message) || 'failed'); }
   })
   .catch(function(){ show('err', "That didn't send. Please call (347) 596-7932 and we'll take care of it."); })
   .finally(function(){ sendBtn.disabled = false; sendBtn.textContent = 'Request my free estimate'; });
